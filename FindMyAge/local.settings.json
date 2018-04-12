@@ -1,0 +1,13 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "",
+    "AzureWebJobsDashboard": "",
+    "MicrosoftAppId": "",
+    "MicrosoftAppPassword": "",
+    "CognitiveVisionAPIKey": "",
+    "CognitiveVisionAPILocation": "",
+    "CognitiveFaceAPIKey": "",
+    "CognitiveFaceAPILocation": ""
+  }
+}
