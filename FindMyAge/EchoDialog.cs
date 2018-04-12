@@ -93,6 +93,12 @@ namespace FindMyAge
             var faces = await DetectAgeInImage(file);
             if (faces.Length > 0)
             {
+                int fontSize = 75;
+                if (faces.Length > 3 && faces.Length < 5)
+                    fontSize = 36;
+                else if (faces.Length >= 5)
+                    fontSize = 24;
+                    
                 WebClient webClient = new WebClient();
                 using (var fs = webClient.OpenRead(file.AbsoluteUri))
                 {
@@ -108,7 +114,7 @@ namespace FindMyAge
                                 g.DrawRectangle(yellowPen,
                                     faceRectangle.Left, faceRectangle.Top,
                                     faceRectangle.Width, faceRectangle.Height);
-                                g.DrawString($"Age {face.FaceAttributes.Age}, {face.FaceAttributes.Gender.Substring(0, 1).ToUpper()}", new Font("Calibri", 75), new SolidBrush(Color.Yellow), faceRectangle.Left, faceRectangle.Top + faceRectangle.Height + 5);
+                                g.DrawString($"Age {face.FaceAttributes.Age}, {face.FaceAttributes.Gender.Substring(0, 1).ToUpper()}", new Font("Calibri", fontSize), new SolidBrush(Color.Yellow), faceRectangle.Left, faceRectangle.Top + faceRectangle.Height + 5);
                             }
                         }
                         maybeFace.Save(outputStream, ImageFormat.Jpeg);
